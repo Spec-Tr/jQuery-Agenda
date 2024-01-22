@@ -14,6 +14,7 @@
 
 Information and documentation used in the creation of this app, but external to the EdX UofT Full-Stack Software Development Bootcamp including syntaxes, best practises and instructional examples for usage came from the following sources:
 - https://www.w3schools.com/jquery/event_ready.asp
+- https://www.w3schools.com/tags/tag_i.asp
 
 ## License
 

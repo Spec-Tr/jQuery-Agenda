@@ -1,5 +1,42 @@
 $(document).ready(function () {
-  // TODO: Add a listener for click events on the save button. This code should
+  $(".saveBtn").click(function () {
+    var hourId = this.parentElement.parentElement.id;
+    var agendaEntry = this.parentElement.children[1].value;
+
+    localStorage.setItem(hourId, agendaEntry);
+  });
+
+  var currentHour = dayjs().hour();
+
+  for (var i = 5; i < 24; i++) {
+    var otherHour = document.getElementById(i);
+
+    if (otherHour) {
+      otherHour.classList.remove('past', 'present', 'future');
+
+      if (i < currentHour) {
+        otherHour.classList.add('past');
+      } else if (i === currentHour) {
+        otherHour.classList.add('present');
+      } else {
+        otherHour.classList.add('future');
+      }
+    } else {
+      console.log("Element with ID " + i + " not found.");
+    }
+  }
+
+  for (var i = 5; i < 24; i++) {
+    var entryText = localStorage.getItem(i);
+    document.getElementById(i).children[1].value = entryText;
+  }
+
+  var todaysDate = dayjs().format('dddd, MMMM D, YYYY h:mm A');
+  var headerDate = document.getElementById("currentDay");
+  headerDate.textContent = todaysDate;
+});
+
+ // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
   // function? How can DOM traversal be used to get the "hour-x" id of the
@@ -17,4 +54,3 @@ $(document).ready(function () {
   // attribute of each time-block be used to do this?
   //
   // TODO: Add code to display the current date in the header of the page.
-});
