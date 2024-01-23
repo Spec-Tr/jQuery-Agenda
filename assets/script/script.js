@@ -1,3 +1,4 @@
+// Event handler for save buttons
 $(document).ready(function () {
   $(".saveBtn").click(function () {
     // Get the hour ID and agenda entry
@@ -8,8 +9,10 @@ $(document).ready(function () {
     localStorage.setItem(hourId, agendaEntry);
   });
 
+  // Get the current hour using dayjs
   var currentHour = dayjs().hour();
 
+  // Update the styling for each hour block based on the current time
   for (var i = 5; i < 24; i++) {
     var otherHour = document.getElementById(i);
 
@@ -28,8 +31,8 @@ $(document).ready(function () {
     }
   }
 
+  // Retrieve saved agenda entries from localStorage and update textarea values
   for (var i = 5; i < 24; i++) {
-    // Get the saved agenda entry from localStorage
     var entryText = localStorage.getItem(i.toString()); // Convert i to a string
     console.log(entryText);
 
@@ -37,6 +40,7 @@ $(document).ready(function () {
     document.getElementById(i.toString()).querySelector(".description").value = entryText;
   }
 
+  // Display the current date in the header
   var todaysDate = dayjs().format('dddd, MMMM D, YYYY h:mm A');
   var headerDate = document.getElementById("currentDay");
   headerDate.textContent = todaysDate;
