@@ -6,6 +6,8 @@ This is a basic agenda app that allows users to fill in events into each hour sl
 
 ## Link to Deployed Website
 
+https://spec-tr.github.io/jQuery-Agenda/
+
 ## Technologies
 
 ### JavaScript
